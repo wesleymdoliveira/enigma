@@ -1,13 +1,26 @@
+/**
+ * Enigma Project
+ * Main.java
+ * v.1.0 - Initial Version
+ * v.1.1 - Use JDesktopFrame 
+ */
+
 package com.viagemvirtual.apps;
 
-import javax.swing.*;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 import com.viagemvirtual.apps.criptografar.EnigmaInGUI;
 import com.viagemvirtual.apps.descriptografar.EnigmaOutGUI;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,6 +35,9 @@ public class Main {
         JFrame frame = new JFrame("Enigma Cryptography");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+        JDesktopPane desktopPane = new JDesktopPane();
+
+        
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Menu");
         
@@ -29,14 +45,21 @@ public class Main {
         JMenuItem criptografarItem = new JMenuItem("Encrypt message");
         criptografarItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                EnigmaInGUI.main(new String[0]);
+                //EnigmaInGUI.main(new String[0]);
+                EnigmaInGUI criptografarFrame = new EnigmaInGUI();
+                desktopPane.add(criptografarFrame);
+                criptografarFrame.setVisible(true);
             }
         });
         
         JMenuItem descriptografarItem = new JMenuItem("Decrypt message");
         descriptografarItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                EnigmaOutGUI.main(new String[0]);
+                //EnigmaOutGUI.main(new String[0]);
+                EnigmaOutGUI descriptografarFrame = new EnigmaOutGUI();
+                desktopPane.add(descriptografarFrame);
+                descriptografarFrame.setVisible(true);
+
             }
         });
         
@@ -50,7 +73,7 @@ public class Main {
         JMenuItem sobreItem = new JMenuItem("About");
         sobreItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Enigma - Cryptography Program\nVersion 1.0\nDeveloped by\n Wesley Mendonca\nwmdeoliveira@cursodecobol.com.br");
+                JOptionPane.showMessageDialog(null, "Enigma - Cryptography Program\nVersion 1.1\nDeveloped by\n Wesley Mendonca\nwmdeoliveira@cursodecobol.com.br");
             }
         });
         
@@ -68,6 +91,7 @@ public class Main {
         menuBar.add(sobreItem);
 
         frame.setJMenuBar(menuBar);
+        frame.setContentPane(desktopPane);
         frame.setPreferredSize(new Dimension(1024, 768));
         frame.pack();
         frame.setLocationRelativeTo(null);

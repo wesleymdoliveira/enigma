@@ -1,37 +1,59 @@
+/** 
+ * Enigma Project 
+ * EnigmaOutGUI.java
+ * v.1.0 - Initial Version
+ * v.1.1 - Use JInternalFrame 
+ */
 package com.viagemvirtual.apps.descriptografar;
 
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.datatransfer.StringSelection;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
-import java.util.Base64;
 
-public class EnigmaOutGUI extends JFrame {
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 
+//public class EnigmaOutGUI extends JFrame {
+public class EnigmaOutGUI extends JInternalFrame {
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 101L;
 	private JTextArea mensagemTextArea;
 	private JButton lerNovaMensagemButton;
 	private JButton limparMensagemButton;
 	private JButton sairButton;
 
 	public EnigmaOutGUI() {
-		setTitle("Decrypt Message");
-		setSize(400, 300);
+		//setTitle("Decrypt Message");
+		super("Decrypt Message", true, true, true, true);
+		setSize(800, 600);
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setLocationRelativeTo(null);
-		setLayout(new BorderLayout());
+		//setLocationRelativeTo(null);
+        setLocation(10, 10);
+
+//		setLayout(new BorderLayout());
 
 		initComponents();
 		addComponentsToFrame();
 
-		setVisible(true);
+//		setVisible(true);
 	}
 
 	private void initComponents() {
@@ -139,6 +161,7 @@ public class EnigmaOutGUI extends JFrame {
 		mensagemTextArea.setText("");
 	}
 
+/*
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -146,4 +169,5 @@ public class EnigmaOutGUI extends JFrame {
 			}
 		});
 	}
+*/
 }

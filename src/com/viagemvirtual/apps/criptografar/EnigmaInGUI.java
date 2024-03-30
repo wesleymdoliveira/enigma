@@ -1,33 +1,55 @@
+/**
+ * Enigma Project 
+ * EnigmaInGUI.java
+ * v.1.0 - Initial Version
+ * v.1.1 - Use JInternalFrame 
+ */
 package com.viagemvirtual.apps.criptografar;
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-import java.util.Base64;
 
-public class EnigmaInGUI extends JFrame {
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 
-    private JTextArea mensagemTextArea;
+//public class EnigmaInGUI extends JFrame {
+public class EnigmaInGUI extends JInternalFrame {
+
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 101L;
+	private JTextArea mensagemTextArea;
     private JButton okButton;
     private JButton limparButton;
     private JButton sairButton;
 
     public EnigmaInGUI() {
-        setTitle("Encrypt Message");
-        setSize(400, 300);
+        //setTitle("Encrypt Message");
+        super("Encrypt Message", true, true, true, true);
+        
+        setSize(800, 600);
         //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
-
+        //setLocationRelativeTo(null);
+        setLocation(10, 10);
+//        setLayout(new BorderLayout());
+        
         initComponents();
         addComponentsToFrame();
 
-        setVisible(true);
+//        setVisible(true);
     }
 
     private void initComponents() {
@@ -116,11 +138,13 @@ public class EnigmaInGUI extends JFrame {
         mensagemTextArea.setText("");
     }
 
-    public static void main(String[] args) {
+/*  public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 new EnigmaInGUI();
             }
         });
     }
+*/
+
 }
